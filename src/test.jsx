@@ -1,12 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect} from "react";
 import { Engine, Scene } from "react-babylonjs";
 import { Vector3, Color3, Vector4 } from "@babylonjs/core";
 
 // var texture = new BABYLON.Texture(, scene);
 //     mat.diffuseTexture = texture;
 
-const url =
-  "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-121.45146305479662,38.54670827618573,10.159349345124639,0,0/400x400?access_token=pk.eyJ1IjoiY3Jvc3NsaW5lYXBleCIsImEiOiJja253dmMwdTkwNGZ5MzJvM2dveGp3YXoxIn0.aV-tb-H02wkB2gYeVcSOaA";
+
 
 var columns = 6; // 6 columns
 var rows = 1; // 1 row
@@ -20,13 +19,16 @@ for (var i = 0; i < 6; i++) {
 }
 
 const SpinningBox = (props) => {
+  useEffect(() => {
+    
+  }, [props.URLImage])
   const boxRef = useRef(null);
 
   return (
     <box
       name={props.name}
       ref={boxRef}
-      size={2}
+      size={40}
       position={props.position}
       height={1}
       width={0.75}
@@ -35,14 +37,18 @@ const SpinningBox = (props) => {
       wrap
     >
       <standardMaterial>
-        <texture url={url} assignTo={"diffuseTexture"} />
+        <texture url={props.URLImage} assignTo={"diffuseTexture"} />
       </standardMaterial>
     </box>
   );
 };
 
-export const SceneWithSpinningBoxes = () => (
-  <div>
+export default function SceneWithSpinningBoxes({URLImage,lng}){
+useEffect(() => {
+  <SpinningBox/>
+}, [URLImage,lng])
+ return(
+  <div >
     <Engine antialias adaptToDeviceRatio canvasId="babylonJS">
       <Scene>
         <arcRotateCamera
@@ -60,11 +66,12 @@ export const SceneWithSpinningBoxes = () => (
         <SpinningBox
           name="left"
           position={new Vector3(0, 0, 0)}
-          color={Color3.FromHexString("#EEB5EB")}
+          color={Color3.FromHexString("#e0e0e0")}
+          URLImage={URLImage}
+          lng={lng}
         />
       </Scene>
     </Engine>
-  </div>
-);
+  </div>);
+}
 
-export default SceneWithSpinningBoxes;
