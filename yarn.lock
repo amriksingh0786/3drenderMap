@@ -1544,6 +1544,21 @@
     "lodash" "^4.17.13"
     "to-fast-properties" "^2.0.0"
 
+"@babylonjs/core@4.2.0":
+  "integrity" "sha512-sZQigPvMDc0pcgwlKvTF5gsMzGwT8gelQIOyxELrohdFu12pHGhIr61+yVxxq9tpCdzyYD9kS8LM0w2y+5ypkg=="
+  "resolved" "https://registry.npmjs.org/@babylonjs/core/-/core-4.2.0.tgz"
+  "version" "4.2.0"
+  dependencies:
+    "tslib" ">=1.10.0"
+
+"@babylonjs/materials@^4.2.0":
+  "integrity" "sha512-YoetSvjpilw39W99RyiZLxZy2Zy3baRckDlv/om/0qFmFK7mWsXfoqp5nBecf8bItyuvPgtfJNZwBe669/j2qw=="
+  "resolved" "https://registry.npmjs.org/@babylonjs/materials/-/materials-4.2.0.tgz"
+  "version" "4.2.0"
+  dependencies:
+    "@babylonjs/core" "4.2.0"
+    "tslib" ">=1.10.0"
+
 "@bcoe/v8-coverage@^0.2.3":
   "integrity" "sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw=="
   "resolved" "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
@@ -3255,6 +3270,11 @@
   "integrity" "sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ=="
   "resolved" "https://registry.npmjs.org/babylon/-/babylon-6.18.0.tgz"
   "version" "6.18.0"
+
+"babylonjs@^4.2.0":
+  "integrity" "sha512-4hniJzWRkV0tDTTYGEHPk1lnfWn0HIw7HOvNWPK0rpUIbJooyeD9E5uVyHnslDedt0mtrA7QZu4i2Cz1DEmSsA=="
+  "resolved" "https://registry.npmjs.org/babylonjs/-/babylonjs-4.2.0.tgz"
+  "version" "4.2.0"
 
 "balanced-match@^1.0.0":
   "integrity" "sha1-ibTRmasr7kneFk6gK4nORi1xt2c="
@@ -11934,7 +11954,7 @@
     "minimist" "^1.2.0"
     "strip-bom" "^3.0.0"
 
-"tslib@^1.10.0", "tslib@^1.8.1", "tslib@^1.9.0":
+"tslib@^1.10.0", "tslib@^1.8.1", "tslib@^1.9.0", "tslib@>=1.10.0":
   "integrity" "sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.11.1.tgz"
   "version" "1.11.1"

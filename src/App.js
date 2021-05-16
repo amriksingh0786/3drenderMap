@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
+import * as BABYLON from 'babylonjs';
+import { Engine, Scene } from 'babylonjs';
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -32,6 +34,28 @@ function App() {
   const getImage = () =>{
     
   }
+  var createScene = function() {
+    var scene = new BABYLON.Scene(engine);
+    var camera = new BABYLON.ArcRotateCamera("Camera", 13 * Math.PI / 8, Math.PI / 4, 5, BABYLON.Vector3.Zero(), scene);
+    camera.attachControl(canvas, false);
+    
+    var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
+    light.intensity = 0.7;
+  
+    var pl = new BABYLON.PointLight("pl", BABYLON.Vector3.Zero(), scene);
+    pl.diffuse = new BABYLON.Color3(1, 1, 1);
+    pl.specular = new BABYLON.Color3(1, 1, 1);
+    pl.intensity = 0.8;
+    
+    var mat = new BABYLON.StandardMaterial("dog", scene);
+    mat.diffuseTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/8/87/Alaskan_Malamute%2BBlank.png", scene);
+    mat.diffuseTexture.hasAlpha = true;
+    mat.backFaceCulling = true;
+    var box = BABYLON.MeshBuilder.CreateBox("box", {}, scene);
+    box.material = mat;
+  
+    return scene;
+  };
   return (
     <div className="App">
       <div className="sidebar">
@@ -40,7 +64,10 @@ function App() {
       <div ref={mapContainer} className="map-container" />
       <button onClick={getImage()}>Get Image</button>
       <div > 
-      <img src={"https://api.mapbox.com/styles/v1/mapbox/light-v10/static/"+lng+","+lat+",14/500x300?access_token=pk.eyJ1IjoiYW1yaWtzaW5naDc4NiIsImEiOiJja29wZ2RicXQwa3ZpMnJudXE4OHJmd2NoIn0.NHIyPWX9FfNSCFRUwpvGfw"} alt="Map Image"/>
+      <img src={"https://api.mapbox.com/styles/v1/mapbox/light-v10/static/"+lng+","+lat+","+zoom+"/500x300?access_token=pk.eyJ1IjoiYW1yaWtzaW5naDc4NiIsImEiOiJja29wZ2RicXQwa3ZpMnJudXE4OHJmd2NoIn0.NHIyPWX9FfNSCFRUwpvGfw"} alt="Map Image"/>
+      </div>
+      <div>
+        {createScene}
       </div>
       </div>
   );
