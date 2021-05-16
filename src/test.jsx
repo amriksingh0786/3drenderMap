@@ -48,7 +48,7 @@ useEffect(() => {
   <SpinningBox/>
 }, [URLImage,lng])
  return(
-  <div >
+  <div style={{width:"100%",height:"100%"}}>
     <Engine antialias adaptToDeviceRatio canvasId="babylonJS">
       <Scene>
         <arcRotateCamera
@@ -60,13 +60,13 @@ useEffect(() => {
         />
         <hemisphericLight
           name="light1"
-          intensity={0.7}
+          intensity={1}
           direction={Vector3.Up()}
         />
         <SpinningBox
           name="left"
           position={new Vector3(0, 0, 0)}
-          color={Color3.FromHexString("#e0e0e0")}
+          color={Color3.FromHexString("#E0E0E0")}
           URLImage={URLImage}
           lng={lng}
         />

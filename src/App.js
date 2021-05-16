@@ -39,10 +39,9 @@ function App() {
       <div ref={mapContainer} className="map-container" />
       <button onClick={()=>{setGet3dImage(true)}}>Get 3D Cuboid Image</button>
       <button onClick={()=>{setGet3dImage(false)}}>try another</button>
-      {get3DImage === true  ? (<><div > 
+      {get3DImage === true  ? (<><div style={{display:"flex",alignContent:"space-between",justifyContent:"space-around"}}> 
       <img src={"https://api.mapbox.com/styles/v1/mapbox/light-v10/static/"+lng+","+lat+","+zoom+"/500x300?access_token=pk.eyJ1IjoiYW1yaWtzaW5naDc4NiIsImEiOiJja29wZ2RicXQwa3ZpMnJudXE4OHJmd2NoIn0.NHIyPWX9FfNSCFRUwpvGfw"} alt="Map Image"/>
-      </div>
-      <div>
+      
       { <SceneWithSpinningBoxes URLImage={URLImage} lng={lng}/>}
             </div>
       </>):""}
