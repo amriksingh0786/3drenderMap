@@ -2,6 +2,10 @@ import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import * as BABYLON from 'babylonjs';
 import { Engine, Scene } from 'babylonjs';
+import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera";
+import {
+  GridMaterial
+} from '@babylonjs/materials';
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -34,9 +38,11 @@ function App() {
   const getImage = () =>{
     
   }
-  var createScene = function() {
-    var scene = new BABYLON.Scene(engine);
-    var camera = new BABYLON.ArcRotateCamera("Camera", 13 * Math.PI / 8, Math.PI / 4, 5, BABYLON.Vector3.Zero(), scene);
+  /* var createScene = function() {
+    const canvas = document.getElementById("renderCanvas");
+    const engine = new Engine(canvas);
+    var scene = new Scene(engine);
+    var camera = new FreeCamera("Camera", 13 * Math.PI / 8, Math.PI / 4, 5, BABYLON.Vector3.Zero(), scene);
     camera.attachControl(canvas, false);
     
     var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
@@ -53,9 +59,9 @@ function App() {
     mat.backFaceCulling = true;
     var box = BABYLON.MeshBuilder.CreateBox("box", {}, scene);
     box.material = mat;
-  
+   
     return scene;
-  };
+  }; */
   return (
     <div className="App">
       <div className="sidebar">
@@ -66,9 +72,9 @@ function App() {
       <div > 
       <img src={"https://api.mapbox.com/styles/v1/mapbox/light-v10/static/"+lng+","+lat+","+zoom+"/500x300?access_token=pk.eyJ1IjoiYW1yaWtzaW5naDc4NiIsImEiOiJja29wZ2RicXQwa3ZpMnJudXE4OHJmd2NoIn0.NHIyPWX9FfNSCFRUwpvGfw"} alt="Map Image"/>
       </div>
-      <div>
+     {/*  <div>
         {createScene}
-      </div>
+      </div> */}
       </div>
   );
 }
